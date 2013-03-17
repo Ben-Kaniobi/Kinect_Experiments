@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Microsoft.Kinect;
 
 namespace Kinect_Experiments
@@ -36,7 +38,21 @@ namespace Kinect_Experiments
 
         void sensor_AllFramesReady(object sender, AllFramesReadyEventArgs e)
         {
-            // Do stuff
+            using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
+            {
+                if (colorFrame != null)
+                {
+                    // Create byte array with pixel data
+                    byte[] pixels = new byte[colorFrame.PixelDataLength];
+                    colorFrame.CopyPixelDataTo(pixels);
+
+                    // Bytes/row = 4 * with (for bgr32)
+                    int stride = colorFrame.Width * 4;
+                    // Display image
+                    img_colorimage.Source = BitmapSource.Create(colorFrame.Width, colorFrame.Height, 96, 96, PixelFormats.Bgr32, null, pixels, stride);
+                }
+            }
+            // Auto dispose
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
