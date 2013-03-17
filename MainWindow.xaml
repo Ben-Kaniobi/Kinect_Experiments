@@ -4,6 +4,6 @@
         Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
     <Grid>
         <Image Height="150" HorizontalAlignment="Left" Margin="12,12,0,0" Name="img_colorimage" Stretch="Fill" VerticalAlignment="Top" Width="200" />
-        <Image Height="150" HorizontalAlignment="Left" Margin="291,12,0,0" Name="image_depthimage" Stretch="Fill" VerticalAlignment="Top" Width="200" />
+        <Image Height="150" HorizontalAlignment="Left" Margin="291,12,0,0" Name="img_depthimage" Stretch="Fill" VerticalAlignment="Top" Width="200" />
     </Grid>
 </Window>
